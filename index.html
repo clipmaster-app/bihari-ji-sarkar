@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>श्री श्री श्री 1008 श्री बिहारी जी सरकार</title>
-<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;font-family:'Tiro Devanagari Hindi',serif;background:#0b0b0b url('bg-glitter.jpg') center/cover no-repeat;min-height:100vh;display:grid;place-items:center;color:#fff;text-align:center}
-  h1{font-size:clamp(26px,6vw,42px);margin:0 12px 8px;text-shadow:0 0 10px #ffd700,0 0 20px #ffb300}
-  p{opacity:.9;margin:0 0 16px}
-  .btn{padding:14px 26px;font-weight:700;border:0;border-radius:12px;cursor:pointer;background:linear-gradient(90deg,#ffd700,#ffa500);box-shadow:0 0 12px rgba(255,215,0,.9);color:#000}
-  .btn:active{transform:translateY(1px)}
-  .tip{position:fixed;right:12px;bottom:12px;background:#ffffffde;color:#111;border-radius:12px;padding:10px 12px;display:none}
-  .tip button{margin-left:8px}
-  img.hero{width:min(850px,92vw);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.4);margin-bottom:16px}
+    body {
+        background: #111;
+        color: white;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+    h1 {
+        color: gold;
+        text-shadow: 0 0 10px yellow, 0 0 20px orange;
+    }
+    .btn {
+        background: yellow;
+        color: black;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 0 20px yellow;
+    }
 </style>
 </head>
 <body>
 
-  <!-- optional hero image -->
-  <img src="bhagwan-photo.jpg" alt="श्री बिहारी जी सरकार" class="hero"/>
+<h1>श्री श्री श्री 1008 श्री बिहारी जी सरकार</h1>
+<p style="color: cyan;">यंत्र दबाएँ - निमंत्रण पाने के लिए</p>
 
-  <h1>श्री श्री श्री 1008 श्री बिहारी जी सरकार</h1>
-  <p>यहीं दबाएँ / Click here</p>
-  <button class="btn" id="getBtn">Get Invitation</button>
+<!-- Get Invitation Button -->
+<a href="invite.html" class="btn" onclick="saveAudioTime()">Get Invitation</a>
 
-  <!-- Same music (shared across pages) -->
-  <audio id="bgm" src="bhajan.mp3" preload="auto" loop playsinline></audio>
-  <div class="tip" id="audioTip">संगीत चलाने के लिए टैप करें <button id="playNow">Play</button></div>
+<!-- Audio -->
+<audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-  const audio = document.getElementById('bgm');
-  const tip   = document.getElementById('audioTip');
+    const audio = document.getElementById("bgMusic");
 
-  // Try to start softly after first gesture (or show tip if blocked)
-  window.addEventListener('load', async () => {
-    try { await audio.play(); } 
-    catch { tip.style.display = 'block'; }
-  });
+    // अगर पहले से कोई time save है तो वहीं से start करो
+    const savedTime = localStorage.getItem("audioTime");
+    if (savedTime) {
+        audio.currentTime = savedTime;
+        audio.play();
+    }
 
-  document.getElementById('playNow').addEventListener('click', async () => {
-    try { await audio.play(); tip.style.display='none'; } catch {}
-  });
+    // हर सेकंड current time save करो
+    setInterval(() => {
+        localStorage.setItem("audioTime", audio.currentTime);
+    }, 1000);
 
-  // On "Get Invitation" → save playback state, then go to invite.html
-  document.getElementById('getBtn').addEventListener('click', () => {
-    const state = {
-      src: audio.currentSrc ? new URL(audio.currentSrc).pathname.split('/').pop() : 'bhajan.mp3',
-      time: audio.currentTime || 0,
-      playing: !audio.paused
-    };
-    sessionStorage.setItem('bgmState', JSON.stringify(state));
-    // optional: pause before leaving (not mandatory)
-    // audio.pause();
-    window.location.href = 'invite.html';
-  });
+    function saveAudioTime() {
+        localStorage.setItem("audioTime", audio.currentTime);
+    }
 </script>
+
 </body>
 </html>

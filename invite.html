@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>निमंत्रण पत्र - श्री बिहारी जी सरकार</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:'Tiro Devanagari Hindi',serif;background:url('invite-bg.jpg') center/cover no-repeat fixed;min-height:100vh;color:#fff}
+  .wrap{max-width:820px;margin:40px auto;padding:16px}
+  .card{background:rgba(0,0,0,.28);backdrop-filter:blur(6px);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.45);padding:18px;text-align:center}
+  h1{font-size:clamp(26px,6vw,40px);margin:10px 0;background:linear-gradient(90deg,#ffd700,#ffa500);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 20px rgba(255,215,0,.7)}
+  .msg{font-size:clamp(15px,3.8vw,19px);line-height:1.9;margin:12px 4px 8px}
+  .details{opacity:.95;margin:16px 0}
+  .row{display:flex;gap:12px;justify-content:center;margin-top:14px}
+  .btn{padding:10px 18px;border:0;border-radius:12px;cursor:pointer;font-weight:700;background:linear-gradient(90deg,#ffd700,#ffa500);color:#000;box-shadow:0 0 12px rgba(255,215,0,.9)}
+  img.deity{width:100%;max-height:420px;object-fit:cover;border-radius:16px;margin-bottom:12px;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+  .tip{position:fixed;right:12px;bottom:12px;background:#ffffffde;color:#111;border-radius:12px;padding:10px 12px;display:none}
+  .tip button{margin-left:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <img class="deity" src="bhagwan-photo.jpg" alt="श्री बिहारी जी सरकार">
+    <h1>श्री श्री श्री 1008 श्री बिहारी जी सरकार</h1>
+    <div class="msg">
+      श्री कृष्ण जन्माष्टमी के पावन अवसर पर <br/>
+      श्री श्री श्री 1008 श्री बिहारी जी सरकार के पावन दरबार में <br/>
+      नगर की सभी माताओं को सुहागलो का निमंत्रण दिया जाता है, <br/>
+      तथा विशाल भंडारे का आयोजन भी किया गया है। <br/>
+      आप सभी लोग भारी मात्रा में आकर हमारे कार्यक्रम को सफल बनाएं।
+    </div>
+    <div class="details">
+      तिथि: 17/08/2025 • समय: 3:00 बजे • स्थान: किले के पास
+    </div>
+    <div class="row">
+      <button class="btn" id="shareBtn">Share</button>
+      <button class="btn" id="copyBtn">Copy Link</button>
+    </div>
+  </div>
+</div>
+
+<!-- same music file -->
+<audio id="bgm" src="bhajan.mp3" preload="auto" loop playsinline></audio>
+<div class="tip" id="audioTip">संगीत चलाने के लिए टैप करें <button id="playNow">Play</button></div>
+
+<script>
+  const audio = document.getElementById('bgm');
+  const tip   = document.getElementById('audioTip');
+
+  // Restore state from index.html
+  const saved = (() => {
+    try { return JSON.parse(sessionStorage.getItem('bgmState')||'{}'); } catch { return {}; }
+  })();
+
+  // Ensure same src
+  if (saved && saved.src) audio.src = saved.src;
+
+  // After metadata, seek to prior time and try to play if it was playing
+  audio.addEventListener('loadedmetadata', async () => {
+    try { if (saved.time) audio.currentTime = saved.time; } catch(e){}
+    if (saved.playing !== false) {
+      try { await audio.play(); }
+      catch { tip.style.display = 'block'; }
+    }
+  });
+
+  document.getElementById('playNow').addEventListener('click', async () => {
+    try { await audio.play(); tip.style.display='none'; } catch {}
+  });
+
+  // Share & Copy
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const data = { title:'निमंत्रण पत्र', text:'आमंत्रण', url:location.href };
+    if (navigator.share) { try { await navigator.share(data); } catch(e){} }
+    else alert('Share supported only on mobile.');
+  });
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(location.href); alert('Link copied!'); }
+    catch { alert('Copy failed'); }
+  });
+</script>
+</body>
+</html>

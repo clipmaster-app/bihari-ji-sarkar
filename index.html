@@ -3,62 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>श्री श्री श्री 1008 श्री बिहारी जी सरकार</title>
+<title>Shri Shri Shri 1008 Shri Bihari Ji Sarkar</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
     body {
-        background: #111;
-        color: white;
+        margin: 0;
+        padding: 0;
+        font-family: 'Great Vibes', cursive;
+        background: radial-gradient(circle at top, #ffefba, #ffffff);
+        overflow-x: hidden;
+    }
+
+    /* Glitter animation background */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url('https://i.ibb.co/hMDRJ6y/glitter.gif');
+        background-size: cover;
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    header {
         text-align: center;
-        font-family: Arial, sans-serif;
+        padding: 20px;
     }
+
+    header img {
+        max-width: 300px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.8);
+    }
+
     h1 {
-        color: gold;
-        text-shadow: 0 0 10px yellow, 0 0 20px orange;
+        font-size: 2.5rem;
+        color: #d63384;
+        text-shadow: 2px 2px 5px gold;
     }
+
+    .click-text {
+        font-size: 1rem;
+        color: #000;
+        margin-top: -10px;
+    }
+
     .btn {
-        background: yellow;
-        color: black;
-        padding: 10px 20px;
-        font-size: 18px;
-        border-radius: 5px;
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 1.5rem;
+        color: white;
+        background: #8000ff;
         text-decoration: none;
+        border-radius: 50px;
+        margin: 20px 0;
+        box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+        animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff; }
+        to { box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00ff; }
+    }
+
+    .social-links {
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        font-size: 2rem;
+        margin: 0 15px;
+        color: #d63384;
+        transition: 0.3s;
+    }
+
+    .social-links a:hover {
+        color: #ff5733;
+        transform: scale(1.2);
+    }
+
+    .join-group {
+        margin-top: 15px;
+        font-size: 1rem;
+        background: #ffd700;
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        color: black;
         font-weight: bold;
-        box-shadow: 0 0 20px yellow;
+        box-shadow: 0 0 10px gold;
     }
 </style>
 </head>
 <body>
 
-<h1>श्री श्री श्री 1008 श्री बिहारी जी सरकार</h1>
-<p style="color: cyan;">यंत्र दबाएँ - निमंत्रण पाने के लिए</p>
-
-<!-- Get Invitation Button -->
-<a href="invite.html" class="btn" onclick="saveAudioTime()">Get Invitation</a>
-
-<!-- Audio -->
-<audio id="bgMusic" autoplay loop>
+<!-- Background Music -->
+<audio autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<script>
-    const audio = document.getElementById("bgMusic");
+<header>
+    <img src="krishna.jpg" alt="Shri Bihari Ji">
+    <h1>Shri Shri Shri 1008 Shri Bihari Ji Sarkar</h1>
+    <p class="click-text">यहाँ दबाएँ</p>
+    <a href="invite.html" class="btn">Get Invitation</a>
 
-    // अगर पहले से कोई time save है तो वहीं से start करो
-    const savedTime = localStorage.getItem("audioTime");
-    if (savedTime) {
-        audio.currentTime = savedTime;
-        audio.play();
-    }
+    <div class="social-links">
+        <!-- Font Awesome CDN (अगर पहले से नहीं है) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    // हर सेकंड current time save करो
-    setInterval(() => {
-        localStorage.setItem("audioTime", audio.currentTime);
-    }, 1000);
+<div style="text-align:center; margin-top:20px; display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
 
-    function saveAudioTime() {
-        localStorage.setItem("audioTime", audio.currentTime);
-    }
-</script>
+  <!-- YouTube -->
+  <a href="https://youtube.com/" target="_blank" style="display:inline-block; width:50px; height:50px; background:#FF0000; color:#fff; border-radius:50%; font-size:24px; display:flex; align-items:center; justify-content:center; box-shadow:0 0 10px #FF0000; transition:0.3s;">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://instagram.com/bihari_ji_sarkar_1008" target="_blank" style="display:inline-block; width:50px; height:50px; background:#E1306C; color:#fff; border-radius:50%; font-size:24px; display:flex; align-items:center; justify-content:center; box-shadow:0 0 10px #E1306C; transition:0.3s;">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- Telegram -->
+  <a href="https://t.me/YourChannel" target="_blank" style="display:inline-block; width:50px; height:50px; background:#0088cc; color:#fff; border-radius:50%; font-size:24px; display:flex; align-items:center; justify-content:center; box-shadow:0 0 10px #0088cc; transition:0.3s;">
+    <i class="fab fa-telegram"></i>
+  </a>
+
+</div>
+
+    </div>
+
+    <br>
+  <div style="text-align:center; margin-top:20px;">
+  <a href="https://chat.whatsapp.com/DWEWr3vejR1CAKxywA5w8p?mode=ac_t" 
+     target="_blank" 
+     style="
+       display:inline-block;
+       padding:12px 24px;
+       font-size:18px;
+       font-weight:700;
+       color:#ffffff; /* text white */
+       text-decoration:none;
+       background-color:#FFD700; /* yellow box */
+       border-radius:10px;
+       box-shadow: 0 0 10px #FFD700, 0 0 20px #FFC700, 0 0 30px #FFB700; /* neon glow */
+       transition: all 0.3s ease;
+     "
+     onmouseover="this.style.boxShadow='0 0 20px #FFD700, 0 0 30px #FFC700, 0 0 40px #FFB700';"
+     onmouseout="this.style.boxShadow='0 0 10px #FFD700, 0 0 20px #FFC700, 0 0 30px #FFB700';"
+  >
+    हमारे ग्रुप से जुड़ें
+  </a>
+</div>
+
+
+</header>
 
 </body>
 </html>
+
